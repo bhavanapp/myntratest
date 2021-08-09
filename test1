@@ -1,0 +1,54 @@
+package basic_selenium;
+
+//import java.awt.Desktop.Action;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class Shopping
+{
+
+public static WebDriver driver;
+
+public static void main( String args[])
+{
+System.setProperty("webdriver.chrome.driver","C:\\chromedriver.exe");
+driver=new ChromeDriver();
+driver.manage().window().maximize();
+driver.get("https://www.myntra.com/");
+
+
+WebElement mainMenu= driver.findElement(By.linkText("MEN"));
+Actions actions = new Actions(driver);
+actions.moveToElement(mainMenu);
+actions.build().perform();
+
+WebElement subMenu= driver.findElement(By.linkText("Fashion Accessories"));
+        actions.moveToElement(subMenu);
+actions.build().perform();
+
+WebElement subSubMenu= driver.findElement(By.linkText("Phone Cases"));
+        actions.moveToElement(subSubMenu);
+actions.build().perform();
+
+
+System.out.println(driver.getTitle());
+
+try
+{
+Thread.sleep(10000);
+}
+catch(InterruptedException e)
+{
+e.printStackTrace();
+}
+driver.close();
+
+}
+
+}
+
+
